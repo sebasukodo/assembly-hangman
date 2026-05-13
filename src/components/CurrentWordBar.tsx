@@ -1,8 +1,14 @@
+type WordBarProps = {
+  isGameOver: boolean;
+  currentWord: string;
+  guessedLetters: string[];
+};
+
 export default function CurrentWordBar({
   isGameOver,
   currentWord,
   guessedLetters,
-}) {
+}: WordBarProps) {
   const letterCurrentWord = isGameOver
     ? [...currentWord].map((x, index) => {
         return guessedLetters.includes(x) ? (

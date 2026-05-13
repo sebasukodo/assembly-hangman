@@ -2,13 +2,21 @@ import clsx from "clsx";
 import { languages } from "../languages";
 import { getFarewellText } from "../utils";
 
+type GameStatusProps = {
+  isGameOver: boolean;
+  isGameWon: boolean;
+  isGameLost: boolean;
+  isLastGuessIncorrect: boolean;
+  wrongGuessCount: number;
+};
+
 export default function GameStatus({
   isGameOver,
   isGameWon,
   isGameLost,
   isLastGuessIncorrect,
   wrongGuessCount,
-}) {
+}: GameStatusProps) {
   function renderGameStatus() {
     if (!isGameOver && isLastGuessIncorrect) {
       return (

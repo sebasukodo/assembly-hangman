@@ -14,33 +14,33 @@ import RestartButton from "./components/RestartButton";
 
 export default function App() {
   // state values
-  const [currentWord, setCurrentWord] = useState(() => getRandomWord());
-  const [guessedLetters, setGuessedLetters] = useState([]);
+  const [currentWord, setCurrentWord] = useState<string>(() => getRandomWord());
+  const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
   // derived values
   const numGuessesLeft = languages.length - 1;
   const wrongGuessCount = guessedLetters.filter(
     (word) => !currentWord.includes(word),
   ).length;
-  const lastGuessedLetters = guessedLetters[guessedLetters.length - 1];
+  const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
   const isLastGuessIncorrect =
-    lastGuessedLetters && !currentWord.includes(lastGuessedLetters);
+    lastGuessedLetter !== undefined && !currentWord.includes(lastGuessedLetter);
 
   const { width, height } = useWindowSize();
 
-  const isGameWon = [...currentWord].every((letter) =>
+  const isGameWon = [...currentWord].every((letter: string): boolean =>
     guessedLetters.includes(letter),
   );
   const isGameLost = wrongGuessCount >= numGuessesLeft ? true : false;
   const isGameOver = isGameLost || isGameWon;
 
-  function guessLetter(letter) {
+  function guessLetter(letter: string): void {
     setGuessedLetters((prev) =>
       prev.includes(letter) ? prev : [...prev, letter],
     );
   }
 
-  function resetGame() {
+  function resetGame(): void {
     setGuessedLetters([]);
     setCurrentWord(getRandomWord());
   }
@@ -70,7 +70,7 @@ export default function App() {
         guessedLetters={guessedLetters}
         numGuessesLeft={numGuessesLeft}
         wrongGuessCount={wrongGuessCount}
-        lastGuessedLetters={lastGuessedLetters}
+        lastGuessedLetter={lastGuessedLetter}
         isLastGuessIncorrect={isLastGuessIncorrect}
       />
 

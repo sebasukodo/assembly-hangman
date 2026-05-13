@@ -1,4 +1,4 @@
-export default function Header({ numGuessesLeft }) {
+export default function Header({ numGuessesLeft }: { numGuessesLeft: number }) {
   return (
     <header>
       <h1>Assembly: Hangman</h1>

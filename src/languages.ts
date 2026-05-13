@@ -1,4 +1,10 @@
-export const languages = [
+type Language = {
+  name: string;
+  backgroundColor: string;
+  color: string;
+};
+
+export const languages: Language[] = [
   {
     name: "JavaScript",
     backgroundColor: "#F4EB13",

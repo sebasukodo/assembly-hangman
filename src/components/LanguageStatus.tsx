@@ -1,6 +1,12 @@
 import { languages } from "../languages";
 
-export default function LanguageStatus({ wrongGuessCount }) {
+type LanguageStatusProps = {
+  wrongGuessCount: number;
+};
+
+export default function LanguageStatus({
+  wrongGuessCount,
+}: LanguageStatusProps) {
   const allLanguages = languages.map((x, index) => (
     <span
       id={x.name}

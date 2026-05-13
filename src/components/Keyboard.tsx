@@ -1,11 +1,18 @@
 import clsx from "clsx";
 
+type KeyboardProps = {
+  guessLetter: (letter: string) => void;
+  isGameOver: boolean;
+  guessedLetters: string[];
+  currentWord: string;
+};
+
 export default function Keyboard({
   guessLetter,
   isGameOver,
   guessedLetters,
   currentWord,
-}) {
+}: KeyboardProps) {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
   const letterButtons = [...alphabet].map((x) => {

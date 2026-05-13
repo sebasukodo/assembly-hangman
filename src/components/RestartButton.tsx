@@ -1,4 +1,12 @@
-export default function RestartButton({ isGameOver, resetGame }) {
+type RestartButtonProps = {
+  isGameOver: boolean;
+  resetGame: () => void;
+};
+
+export default function RestartButton({
+  isGameOver,
+  resetGame,
+}: RestartButtonProps) {
   const restartButton = isGameOver && (
     <button
       className="restart-button"
